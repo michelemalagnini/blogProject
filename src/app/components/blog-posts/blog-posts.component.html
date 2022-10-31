@@ -1,0 +1,112 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">BLOG DASHBOARD</a>
+     
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#postModal" (click)="addClick()">Add Post</button>
+       
+    </div>
+</nav>
+
+<ng-template #other_content>
+  <div class="container fill-height">
+    <div class="row">
+     <div class="col-lg-1"></div>
+       <div id="hello" class="col-lg-10">
+            <h1 style="text-align:center;">Add a post</h1>
+       </div>
+     <div class="col-lg-1"></div>
+   </div>
+  </div>
+</ng-template> 
+
+
+
+<div class="container" *ngIf="postDetails && postDetails.length > 0; else other_content">
+  <div class="row">
+    <div class="col-12">
+		<table class="table table-image">
+		  <thead>
+		    <tr>
+          <th scope="col">Creation Date</th>
+          <th scope="col">Title</th>
+          <th scope="col">Body</th>
+          <th scope="col">Image</th>
+          <th scope="col">Category</th>
+          <th scope="col">Author</th>
+          <th scope="col">Action</th>
+		    </tr>
+		  </thead>
+		  <tbody *ngIf="postDetails && postDetails.length > 0">
+        <tr *ngFor="let p of postDetails">
+		      <th scope="row">{{p.date | date}}</th>
+          <td>{{p.title}}</td>
+		      <td>{{p.body | slice:0:6}}</td>
+          <td class="w-25">
+            <img [src]="p.image" class="img-fluid img-thumbnail" />		      
+          </td>
+          <td>{{p.category}}</td>
+		      <td>{{p.author}}</td>
+          <td>
+            <button class="btn btn-sm btn-warning text-white m-2" (click)="edit(p)"
+            data-bs-toggle="modal" data-bs-target="#postModal">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deletPostDetail(p.id)">Delete</button>
+          </td>
+		    </tr>
+		  </tbody>
+		</table>   
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="postForm">
+          <div class="mb-3">
+            <label  class="forl-label">Title</label>
+            <input type="text" class="form-control" placeholder="Title" formControlName="title">
+          </div>
+  
+          <div class="mb-3">
+            <label  class="forl-label">Body</label>
+            <textarea class="form-control" type="text" class="form-control" placeholder="Body" formControlName="body"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label  class="forl-label">Image</label>
+            <input type="text" class="form-control" placeholder="Image url" formControlName="image">
+          </div>
+
+          <div class="mb-3">
+            <label  class="forl-label">Category</label>
+            <select class="form-control" name="category" formControlName="category">
+              <option value="" disabled selected>Select a category</option>
+              <option [value]="c" *ngFor="let c of categories">
+                {{ c }}
+              </option>
+            </select>
+          </div>
+  
+          <div class="mb-3">
+            <label  class="forl-label">Author</label>
+            <input type="text" class="form-control" placeholder="Author" formControlName="author">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close" (click)="reset()">Close</button>
+        <button *ngIf="showUpdateBtn" type="button" class="btn btn-primary" (click)="updatePostBlog()">Update Post</button>
+        <button *ngIf="showAddBtn" type="button" class="btn btn-success" (click)="addPostBlog()">Add Post</button>
+      </div>
+    </div>
+  </div>
+</div>
