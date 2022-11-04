@@ -13,6 +13,7 @@ export class BlogPostsComponent implements OnInit {
   postForm: FormGroup;
   postModel: Post;
   postDetails: Post[];
+  postDetailsFilterByCategory: Post[];
   showAddBtn: boolean = true;
   showUpdateBtn: boolean = false;
   categories: string[];
@@ -40,7 +41,7 @@ export class BlogPostsComponent implements OnInit {
       image:[''],
       category:[''],
       author:[''],
-      date:[new Date()]
+      date:['']
     })
   }
 
@@ -50,7 +51,19 @@ export class BlogPostsComponent implements OnInit {
     })
   }
 
+  filterPosts(category: string){
+    console.log(category)
+    this.api.getAllPost().subscribe(res => {
+      if(category) {
+        this.postDetails  = res.filter(x => x.category === category);
+      } if(category === 'all'){
+        this.postDetails = res;
+      }
+    })
+  }
+
   addPostBlog(){
+    this.postForm.controls['date'].setValue(new Date());
     this.postModel = Object.assign({}, this.postForm.value)
     this.api.addPost(this.postModel).subscribe(res => {
       let close = document.getElementById('close');

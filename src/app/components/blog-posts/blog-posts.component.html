@@ -1,13 +1,27 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand">BLOG DASHBOARD</a>
-     
         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#postModal" (click)="addClick()">Add Post</button>
-       
     </div>
 </nav>
 
-<div class="container" *ngIf="postDetails && postDetails.length > 0; else other_content">
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Filter</h5>
+    <div class="card-body">
+      <h5 class="card-title">Filter by category</h5>
+      <p class="card-text">Select the category to see all the category posts</p>
+      <select class="form-select" aria-label="Default select example" (change)="filterPosts($event.target.value)">
+        <option [value]="''" disabled selected>Select Filter</option>
+        <option>all</option>
+        <option [value]="c" *ngFor="let c of categories">
+          {{ c }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+  </div>
   <div class="row">
     <div class="col-12">
 		<table class="table table-image">
@@ -39,23 +53,31 @@
           </td>
 		    </tr>
 		  </tbody>
+      <tbody *ngIf="postDetailsFilterByCategory && postDetailsFilterByCategory.length > 0">
+        <tr *ngFor="let p of postDetailsFilterByCategory">
+		      <th scope="row">{{p.date | date}}</th>
+          <td>{{p.title}}</td>
+		      <td>{{p.body | slice:0:6}}</td>
+          <td class="w-25">
+            <img [src]="p.image" class="img-fluid img-thumbnail" />		      
+          </td>
+          <td>{{p.category}}</td>
+		      <td>{{p.author}}</td>
+          <td>
+            <button class="btn btn-sm btn-warning text-white m-2" (click)="edit(p)"
+            data-bs-toggle="modal" data-bs-target="#postModal">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deletPostDetail(p.id)">Delete</button>
+          </td>
+		    </tr>
+		  </tbody>
 		</table>   
     </div>
   </div>
 </div>
 
 
-<ng-template #other_content>
-  <div class="container fill-height">
-    <div class="row">
-     <div class="col-lg-1"></div>
-       <div id="hello" class="col-lg-10">
-            <h1 style="text-align:center;">Add a post</h1>
-       </div>
-     <div class="col-lg-1"></div>
-   </div>
-  </div>
-</ng-template> 
+
+
 
 <!-- Button trigger modal -->
 
