@@ -176,6 +176,9 @@ export class BlogPostsComponent implements OnInit {
     this.postModel = Object.assign({});
   }
 
+  onSelect(p:Post){
+    console.log(p)
+  }
 
 
 }
