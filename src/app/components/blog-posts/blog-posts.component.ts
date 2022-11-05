@@ -3,6 +3,8 @@ import { ReactiveFormsModule, FormControl, FormsModule, FormGroup } from '@angul
 import { ApiServiceService } from 'src/app/shared/api-service.service';
 import { FormBuilder } from '@angular/forms';
 import { Post } from 'src/app/models/post';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+
 @Component({
   selector: 'app-blog-posts',
   templateUrl: './blog-posts.component.html',
@@ -31,6 +33,53 @@ export class BlogPostsComponent implements OnInit {
       'pesci'
     ];
   }
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+      spellcheck: true,
+      height: 'auto',
+      minHeight: '0',
+      maxHeight: 'auto',
+      width: 'auto',
+      minWidth: '0',
+      translate: 'yes',
+      enableToolbar: true,
+      showToolbar: true,
+      placeholder: 'Enter text here...',
+      defaultParagraphSeparator: '',
+      defaultFontName: '',
+      defaultFontSize: '',
+      fonts: [
+        {class: 'arial', name: 'Arial'},
+        {class: 'times-new-roman', name: 'Times New Roman'},
+        {class: 'calibri', name: 'Calibri'},
+        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+      ],
+      customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    uploadUrl: 'v1/image',
+    // upload: (file: File) => { ... }
+    uploadWithCredentials: false,
+    sanitize: true,
+    toolbarPosition: 'top',
+    toolbarHiddenButtons: [
+      ['bold', 'italic'],
+      ['fontSize']
+    ]
+};
 
 
   createPostForm() {
@@ -117,5 +166,7 @@ export class BlogPostsComponent implements OnInit {
     this.postForm.reset();
     this.postModel = Object.assign({});
   }
+
+
 
 }
