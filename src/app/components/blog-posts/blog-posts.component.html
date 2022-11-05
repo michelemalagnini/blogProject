@@ -27,9 +27,9 @@
                           <h6 class="text-muted">category</h6>
                       </div>
                       <div class="col-5 text-right">
-                          <h4 *ngIf="c === 'gatti'">{{gattiNposts.length}}</h4>
-                          <h4 *ngIf="c === 'pesci'">{{pesciNposts.length}}</h4>
-                          <h4 *ngIf="c === 'cani'">{{caniNposts.length}}</h4>
+                          <h4 *ngIf="c === 'gatti'">{{gattiNposts?.length}}</h4>
+                          <h4 *ngIf="c === 'pesci'">{{pesciNposts?.length}}</h4>
+                          <h4 *ngIf="c === 'cani'">{{caniNposts?.length}}</h4>
                           <h6 class="success darken-4">POST NUMBER<i class="la"></i></h6>
                       </div>
                   </div>
@@ -72,7 +72,7 @@
           <td>{{p.category}}</td>
 		      <td>{{p.author}}</td>
           <td>
-            <button class="btn btn-sm btn-warning text-white m-2" (click)="edit(p)"
+            <button class="btn btn-sm btn-warning text-white m-1" (click)="edit(p)"
             data-bs-toggle="modal" data-bs-target="#postModal">Edit</button>
             <button class="btn btn-sm btn-danger" (click)="deletPostDetail(p.id)">Delete</button>
           </td>
