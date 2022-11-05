@@ -12,21 +12,11 @@ h4 {
 }
 
 
-.bodyTxt{
-  width: 30%;
-}
-
-
 * {
     box-sizing: border-box;
     font-family: "Avenir", "Helvetica", sans-serif;
 }
 
-body {
-    background-color: #f9f9f9;
-}
-
-/* Default table styles for this demo */
 table {
     border-collapse: collapse;
     text-align: left;
@@ -50,30 +40,4 @@ table td span {
     text-transform: uppercase;
     top: 0;
     left: 0;
-}
-
-/* Simple CSS for flexbox table on mobile */
-@media(max-width: 800px) {
-    table thead {
-        left: -9999px;
-        position: absolute;
-        visibility: hidden;
-    }
-    table tr {
-        border-bottom: 0;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-    }
-    table td {
-        border: 1px solid;
-        margin: 0 -1px -1px 0;
-        padding-top: 35px;
-        position: relative;
-        width: 50%;
-    }
-    table td span {
-        display: block;
-    }
 }

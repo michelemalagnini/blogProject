@@ -64,8 +64,7 @@
         <tr *ngFor="let p of postDetails">
 		      <th scope="row">{{p.date | date}}</th>
           <td>{{p.title}}</td>
-          <td [innerHTML]="p.body " class="bodyTxt"></td>
-		      <!-- <td>{{p.body | slice:0:6}}</td> -->
+          <td [innerHTML]="p.body "></td>
           <td class="w-25">
             <img [src]="p.image" class="img-fluid img-thumbnail" />		      
           </td>
