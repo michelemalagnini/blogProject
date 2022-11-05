@@ -5,23 +5,45 @@
     </div>
 </nav>
 
+<div class="container-fluid">
+<h4> Category Overview
+  <div class="btn-group pull-right">
+    <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#filterModal" (click)="addClick()">Filter by Category</button>
+  </div>
+  </h4>
+</div>
+
+<div class="row">
+  <div class="col-xl-4 col-12" *ngFor="let c of categories">
+      <div class="card">
+          <div class="card-content">
+              <div class="card-body pb-0">
+                  <div class="row">
+                      <div class="col-2">
+                          <i class="warning font-large-2"></i>
+                      </div>
+                      <div class="col-5 pl-2">
+                          <h4>{{c}}</h4>
+                          <h6 class="text-muted">category</h6>
+                      </div>
+                      <div class="col-5 text-right">
+                          <h4 *ngIf="c === 'gatti'">{{gattiNposts.length}}</h4>
+                          <h4 *ngIf="c === 'pesci'">{{pesciNposts.length}}</h4>
+                          <h4 *ngIf="c === 'cani'">{{caniNposts.length}}</h4>
+                          <h6 class="success darken-4">POST NUMBER<i class="la"></i></h6>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-12"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div><canvas id="btc-chartjs" class="height-75 chartjs-render-monitor" style="display: block; height: 75px; width: 355px;" width="710" height="150"></canvas></div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 
 <div class="container">
-  <div class="card">
-    <h5 class="card-header">Filter</h5>
-    <div class="card-body">
-      <h5 class="card-title">Filter by category</h5>
-      <p class="card-text">Select the category to see all the category posts</p>
-      <select class="form-select" aria-label="Default select example" (change)="filterPosts($event.target.value)">
-        <option [value]="''" disabled selected>Select Filter</option>
-        <option>all</option>
-        <option [value]="c" *ngFor="let c of categories">
-          {{ c }}
-        </option>
-      </select>
-    </div>
-  </div>
   <div class="row">
   </div>
   <div class="row">
@@ -85,13 +107,13 @@
 <!-- Button trigger modal -->
 
 
-<!-- Modal -->
+<!-- Add post Modal -->
 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Post</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
       <div class="modal-body">
         <form [formGroup]="postForm">
@@ -131,6 +153,34 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close" (click)="reset()">Close</button>
         <button *ngIf="showUpdateBtn" type="button" class="btn btn-primary" (click)="updatePostBlog()">Update Post</button>
         <button *ngIf="showAddBtn" type="button" class="btn btn-success" (click)="addPostBlog()">Add Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Filter modal -->
+
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <select class="form-select" aria-label="Default select example" (change)="filterPosts($event.target.value)">
+          <option [value]="''" disabled selected>Select Filter</option>
+          <option>all</option>
+          <option [value]="c" *ngFor="let c of categories">
+            {{ c }}
+          </option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeFilter">Close</button>
+        <!-- <button *ngIf="showUpdateBtn" type="button" class="btn btn-primary" (click)="updatePostBlog()">Update Post</button>
+        <button *ngIf="showAddBtn" type="button" class="btn btn-success" (click)="addPostBlog()">Add Post</button> -->
       </div>
     </div>
   </div>

@@ -19,6 +19,10 @@ export class BlogPostsComponent implements OnInit {
   showAddBtn: boolean = true;
   showUpdateBtn: boolean = false;
   categories: string[];
+  gattiNposts: Post[];
+  caniNposts: Post[];
+  pesciNposts: Post[];
+
 
 
 
@@ -27,6 +31,7 @@ export class BlogPostsComponent implements OnInit {
   ngOnInit(): void {
     this.createPostForm();
     this.getAllPostDetail();
+    // array per popolare le categorie del blog
     this.categories = [
       'gatti',
       'cani',
@@ -81,7 +86,7 @@ export class BlogPostsComponent implements OnInit {
     ]
 };
 
-
+// creo il reactive form per inserire i post 
   createPostForm() {
     this.postForm = this.fb.group({
       id:[''],
@@ -93,16 +98,20 @@ export class BlogPostsComponent implements OnInit {
       date:['']
     })
   }
-
+// parte all ngOnInit e mi ottengo tutti i post presenti nel blog
   getAllPostDetail(){
     this.api.getAllPost().subscribe(res => {
       this.postDetails = res;
+      this.gattiNposts = res.filter(x => x.category === 'gatti');
+      this.caniNposts = res.filter(x => x.category === 'cani');
+      this.pesciNposts = res.filter(x => x.category === 'pesci');
     })
   }
-
+// metodo per filtrare in base alla categoria la visualizzazione dei post
   filterPosts(category: string){
-    console.log(category)
     this.api.getAllPost().subscribe(res => {
+      let close = document.getElementById('closeFilter');
+      close.click();
       if(category) {
         this.postDetails  = res.filter(x => x.category === category);
       } if(category === 'all'){
@@ -110,7 +119,7 @@ export class BlogPostsComponent implements OnInit {
       }
     })
   }
-
+// metodo per aggiungere post al database
   addPostBlog(){
     this.postForm.controls['date'].setValue(new Date());
     this.postModel = Object.assign({}, this.postForm.value)
@@ -123,7 +132,7 @@ export class BlogPostsComponent implements OnInit {
       alert('Error');
     })
   }
-
+// metodo per eliminare i post
   deletPostDetail(id: number){
     this.api.deletePost(id).subscribe(res => {
       this.getAllPostDetail();
@@ -131,7 +140,7 @@ export class BlogPostsComponent implements OnInit {
       alert('Error');
     })
   }
-
+// metodo per modificare i post
   edit(post: Post) {
     this.showAddBtn = false;
     this.showUpdateBtn = true;
@@ -143,7 +152,7 @@ export class BlogPostsComponent implements OnInit {
     this.postForm.controls['author'].setValue(post.author);
     this.postForm.controls['date'].setValue(post.date);
   }
-
+// metodo per fare l update alla chiusura della modal
   updatePostBlog(){
     this.postModel = Object.assign({}, this.postForm.value)
     this.api.updatePost(this.postModel, this.postModel.id).subscribe(res => {
@@ -156,12 +165,12 @@ export class BlogPostsComponent implements OnInit {
       alert('Error');
     })
   }
-
+// modifico il bottone della modale da update a edit
   addClick(){
     this.showAddBtn = true;
     this.showUpdateBtn = false;
   }
-
+// metodo per resettare il form
   reset(){
     this.postForm.reset();
     this.postModel = Object.assign({});
