@@ -11,7 +11,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
   styleUrls: ['./blog-posts.component.css']
 })
 export class BlogPostsComponent implements OnInit {
-  // inizializzo le variabilit e gli assegno un type
+  // inizializzo le variabili
   postForm: FormGroup;
   postModel: Post;
   postDetails: Post[];

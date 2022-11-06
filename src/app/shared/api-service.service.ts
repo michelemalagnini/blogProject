@@ -29,7 +29,6 @@ export class ApiServiceService {
     return this.http.put<Post>(this.baseUrl+'posts/'+id, data);
   }
 
-  // se volessimo creare la view dell post 
   getPostById(id: string) {
     const url = `${this.baseUrl}posts/${id}`;
     return this.http.get<Post>(url);
