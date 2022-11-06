@@ -11,7 +11,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
   styleUrls: ['./blog-posts.component.css']
 })
 export class BlogPostsComponent implements OnInit {
-
+  // inizializzo le variabilit e gli assegno un type
   postForm: FormGroup;
   postModel: Post;
   postDetails: Post[];
@@ -25,7 +25,7 @@ export class BlogPostsComponent implements OnInit {
 
 
 
-
+  // ignetto il servizio per poi fare le chiamate al back end JSON SERVE
   constructor(private api: ApiServiceService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class BlogPostsComponent implements OnInit {
       'pesci'
     ];
   }
-
+  // oggetto per l editor WYSIWYG
   editorConfig: AngularEditorConfig = {
     editable: true,
       spellcheck: true,
@@ -86,7 +86,7 @@ export class BlogPostsComponent implements OnInit {
     ]
 };
 
-// creo il reactive form per inserire i post 
+// creo il reactive form per inserire i post lo richiamo all apertura del componente nell ngOnInit
   createPostForm() {
     this.postForm = this.fb.group({
       id:[''],
@@ -98,7 +98,7 @@ export class BlogPostsComponent implements OnInit {
       date:['']
     })
   }
-// parte all ngOnInit e mi ottengo tutti i post presenti nel blog
+// metodo che parte all ngOnInit grazie al quale ottengo tutti i post presenti nel blog
   getAllPostDetail(){
     this.api.getAllPost().subscribe(res => {
       this.postDetails = res;
@@ -176,9 +176,6 @@ export class BlogPostsComponent implements OnInit {
     this.postModel = Object.assign({});
   }
 
-  onSelect(p:Post){
-    console.log(p)
-  }
 
 
 }
