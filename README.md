@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to http://localhost:4200/.
 
-Run `npm run`  or `server json-server --watch db.json` to start the JSON server
+Run `npm run server `  or `json-server --watch db.json` to start the JSON server
 
 ## Code scaffolding
 
