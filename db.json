@@ -2,11 +2,11 @@
   "posts": [
     {
       "id": 1,
-      "title": "Il film lo squalo",
+      "title": "Il film lo squalone",
       "body": "<div><u><font color=\"#d32727\">testo di porova modificato con un editor modifico testo</font> nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u></div>",
       "image": "https://www.socialnews.it/wp-content/uploads/2014/lo-squalo-2.jpg",
       "category": "pesci",
-      "author": "Marione",
+      "author": "Mario",
       "date": "2022-11-05T13:44:45.734Z"
     },
     {
@@ -26,15 +26,6 @@
       "category": "pesci",
       "author": "Arturo",
       "date": "2022-11-05T15:39:41.502Z"
-    },
-    {
-      "id": 5,
-      "title": "cagnolone cattivo ",
-      "body": "<u><font color=\"#d32727\">testo di porova modificato con un editor modifico testo</font>&#160;nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u><u>testo di porova modificato con un editor modifico testo nuovo&#160;</u>",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp7XqhoIFOF1V7pUNGAHd-O02aka4cKtE1kg&usqp=CAU",
-      "category": "cani",
-      "author": "cagnaccione",
-      "date": "2022-11-05T15:51:34.501Z"
     },
     {
       "id": 6,
