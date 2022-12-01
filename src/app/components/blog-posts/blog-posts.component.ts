@@ -22,6 +22,7 @@ export class BlogPostsComponent implements OnInit {
   gattiNposts: Post[];
   caniNposts: Post[];
   pesciNposts: Post[];
+  buttonType: string;
 
 
 
@@ -144,13 +145,8 @@ export class BlogPostsComponent implements OnInit {
   edit(post: Post) {
     this.showAddBtn = false;
     this.showUpdateBtn = true;
-    this.postForm.controls['id'].setValue(post.id);
-    this.postForm.controls['title'].setValue(post.title);
-    this.postForm.controls['body'].setValue(post.body);
-    this.postForm.controls['image'].setValue(post.image);
-    this.postForm.controls['category'].setValue(post.category);
-    this.postForm.controls['author'].setValue(post.author);
-    this.postForm.controls['date'].setValue(post.date);
+    // this.buttonType = Buttons.Update;
+    this.postForm.patchValue(post);
   }
 // metodo per fare l update alla chiusura della modal
   updatePostBlog(){
@@ -169,6 +165,7 @@ export class BlogPostsComponent implements OnInit {
   addClick(){
     this.showAddBtn = true;
     this.showUpdateBtn = false;
+    // this.buttonType = Buttons.Add;
   }
 // metodo per resettare il form
   reset(){

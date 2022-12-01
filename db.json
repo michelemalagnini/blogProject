@@ -35,6 +35,15 @@
       "category": "gatti",
       "author": "millerone",
       "date": "2022-11-05T23:43:27.231Z"
+    },
+    {
+      "id": 7,
+      "title": "Prova",
+      "body": "Questo &#232; un testo di prova",
+      "image": "https://static.cani.com/uploads/2022/01/lfyx38w4o65bbr9sq2y4xfbrtb5cccdngy3fqngu1c5sc4wy9q7c3gp7sn6uy5a3qhelmmpt0uduzxcswc09f.jpg",
+      "category": "cani",
+      "author": "Marone",
+      "date": "2022-12-01T08:21:25.376Z"
     }
   ]
 }

@@ -9,6 +9,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { SinglePostPageComponent } from './components/single-post-page/single-post-page.component';
+import { NavComponent } from './components/nav/nav.component';
+import { FilterCategoryOverviewComponent } from './components/filter-category-overview/filter-category-overview.component';
+import { FilterModalComponent } from './components/modals/filter-modal/filter-modal.component';
+import { AddPostModalComponent } from './components/modals/add-post-modal/add-post-modal.component';
 
 
 
@@ -16,7 +20,11 @@ import { SinglePostPageComponent } from './components/single-post-page/single-po
   declarations: [
     AppComponent,
     BlogPostsComponent,
-    SinglePostPageComponent
+    SinglePostPageComponent,
+    NavComponent,
+    FilterCategoryOverviewComponent,
+    FilterModalComponent,
+    AddPostModalComponent
   ],
   imports: [
     BrowserModule,
